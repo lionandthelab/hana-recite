@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:firestore_service/firestore_service.dart';
 import 'package:hanarecite/app/home/models/entry.dart';
 import 'package:hanarecite/app/home/models/job.dart';
+import 'package:hanarecite/app/home/models/book.dart';
+import 'package:hanarecite/app/home/models/page.dart';
+import 'package:hanarecite/app/home/models/verse.dart';
 import 'package:hanarecite/services/firestore_path.dart';
 
 String documentIdFromCurrentDate() => DateTime.now().toIso8601String();
@@ -56,5 +59,34 @@ class FirestoreDatabase {
             : null,
         builder: (data, documentID) => Entry.fromMap(data, documentID),
         sort: (lhs, rhs) => rhs.start.compareTo(lhs.start),
+      );
+
+  // Book
+  Stream<Book> bookStream({required String bookId}) => _service.documentStream(
+        path: FirestorePath.book(bookId),
+        builder: (data, documentId) => Book.fromMap(data, documentId),
+      );
+
+  Stream<List<Book>> booksStream() => _service.collectionStream(
+        path: FirestorePath.books(),
+        builder: (data, documentId) => Book.fromMap(data, documentId),
+      );
+
+  // Page
+  Stream<List<Page>> pagesStream({Book? book}) =>
+      _service.collectionStream<Page>(
+        path: FirestorePath.pages(),
+        queryBuilder: book != null
+            ? (query) => query.where('bookId', isEqualTo: book.id)
+            : null,
+        builder: (data, documentID) => Page.fromMap(data, documentID),
+        sort: (lhs, rhs) => rhs.pageIndex.compareTo(lhs.pageIndex),
+      );
+
+  // Verse
+  Stream<Verse> verseStream({required String verseId}) =>
+      _service.documentStream(
+        path: FirestorePath.verse(verseId),
+        builder: (data, documentId) => Verse.fromMap(data, documentId),
       );
 }

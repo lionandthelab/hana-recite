@@ -3,6 +3,7 @@ import 'package:hanarecite/app/home/account/account_page.dart';
 import 'package:hanarecite/app/home/cupertino_home_scaffold.dart';
 import 'package:hanarecite/app/home/entries/entries_page.dart';
 import 'package:hanarecite/app/home/jobs/jobs_page.dart';
+import 'package:hanarecite/app/home/books/books_page.dart';
 import 'package:hanarecite/app/home/tab_item.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,17 +12,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TabItem _currentTab = TabItem.jobs;
+  TabItem _currentTab = TabItem.books;
 
   final Map<TabItem, GlobalKey<NavigatorState>> navigatorKeys = {
-    TabItem.jobs: GlobalKey<NavigatorState>(),
+    TabItem.books: GlobalKey<NavigatorState>(),
     TabItem.entries: GlobalKey<NavigatorState>(),
     TabItem.account: GlobalKey<NavigatorState>(),
   };
 
   Map<TabItem, WidgetBuilder> get widgetBuilders {
     return {
-      TabItem.jobs: (_) => JobsPage(),
+      // TabItem.jobs: (_) => JobsPage(),
+      TabItem.books: (_) => BooksPage(),
       TabItem.entries: (_) => EntriesPage(),
       TabItem.account: (_) => AccountPage(),
     };

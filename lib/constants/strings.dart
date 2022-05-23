@@ -18,6 +18,9 @@ class Strings {
   // Home page
   static const String homePage = '홈';
 
+  // Books page
+  static const String books = '말씀선포 책';
+
   // Jobs page
   static const String jobs = '말씀선포';
 
