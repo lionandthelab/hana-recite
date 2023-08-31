@@ -21,21 +21,23 @@ class OnboardingPage extends ConsumerWidget {
           children: [
             Text(
               '하나암송',
-              style: Theme.of(context).textTheme.headline3,
+              style: Theme.of(context).textTheme.titleLarge,
+              textScaleFactor: 2,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16.0),
+            Container(
+              height: 200,
+              child: SvgPicture.asset('assets/bible.svg',
+                  color: Colors.blueAccent),
+            ),
+            const SizedBox(height: 12.0),
             Text(
-              '하나님의 말씀을 선포하십시오!',
-              style: Theme.of(context).textTheme.headline6,
+              '하나님의 말씀을 선포하세요!',
+              style: Theme.of(context).textTheme.headline5,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 64.0),
-            // FractionallySizedBox(
-            //   widthFactor: 0.5,
-            //   child: SvgPicture.asset('assets/time-tracking.svg',
-            //       semanticsLabel: 'Time tracking logo'),
-            // ),
             CustomRaisedButton(
               onPressed: () => onGetStarted(context, ref),
               color: Colors.blue,
@@ -48,6 +50,7 @@ class OnboardingPage extends ConsumerWidget {
                     .copyWith(color: Colors.white),
               ),
             ),
+            const SizedBox(height: 20.0),
           ],
         ),
       ),

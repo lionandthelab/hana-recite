@@ -35,8 +35,6 @@ class BooksPage extends ConsumerWidget {
       itemBuilder: (context, book) => Dismissible(
         key: Key('book-${book.id}'),
         background: Container(color: Colors.blue),
-        direction: DismissDirection.startToEnd,
-        onDismissed: (direction) => BookPagesPage.show(context, book),
         child: BookListTile(
           book: book,
           onTap: () => BookPagesPage.show(context, book),

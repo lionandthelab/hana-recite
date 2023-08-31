@@ -78,7 +78,7 @@ class AccountPage extends ConsumerWidget {
               // const SizedBox(height: 8.0),
               _buildSettings(),
               const SizedBox(height: 8.0),
-              SfDateRangePicker(),
+              // SfDateRangePicker(),
             ],
           ),
         ),
@@ -109,28 +109,28 @@ class AccountPage extends ConsumerWidget {
   Widget _buildSettings() {
     return Column(
       children: [
-        Icon(
-          Icons.settings,
-          color: Colors.grey,
-          size: 54,
-        ),
-        const SizedBox(height: 8),
-        Text(
-          "설정1",
-          style: const TextStyle(color: Colors.black54),
-        ),
-        const SizedBox(height: 8),
-        Icon(
-          Icons.settings,
-          color: Colors.grey,
-          size: 54,
-        ),
-        const SizedBox(height: 8),
-        Text(
-          "설정2",
-          style: const TextStyle(color: Colors.black54),
-        ),
-        const SizedBox(height: 8),
+        // Icon(
+        //   Icons.settings,
+        //   color: Colors.grey,
+        //   size: 54,
+        // ),
+        // const SizedBox(height: 8),
+        // Text(
+        //   "설정1",
+        //   style: const TextStyle(color: Colors.black54),
+        // ),
+        // const SizedBox(height: 8),
+        // Icon(
+        //   Icons.settings,
+        //   color: Colors.grey,
+        //   size: 54,
+        // ),
+        // const SizedBox(height: 8),
+        // Text(
+        //   "설정2",
+        //   style: const TextStyle(color: Colors.black54),
+        // ),
+        // const SizedBox(height: 8),
       ],
     );
   }

@@ -8,12 +8,14 @@ import 'package:hanarecite/app/home/models/job.dart';
 import 'package:hanarecite/app/home/models/book.dart';
 import 'package:hanarecite/app/home/models/page.dart' as PageModel;
 import 'package:hanarecite/app/home/book_pages/page_page.dart';
+import 'package:hanarecite/app/home/book_pages/chant_page.dart';
 
 class AppRoutes {
   static const emailPasswordSignInPage = '/email-password-sign-in-page';
   static const editJobPage = '/edit-job-page';
   static const entryPage = '/entry-page';
   static const pagePage = '/page-page';
+  static const chantPage = '/chant-page';
 }
 
 class AppRouter {
@@ -49,6 +51,12 @@ class AppRouter {
         final page = mapArgs['page'] as PageModel.Page?;
         return MaterialPageRoute<dynamic>(
           builder: (_) => PagePage(book: book, page: page),
+          settings: settings,
+          fullscreenDialog: true,
+        );
+      case AppRoutes.chantPage:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => ChantPage(vid: args as String),
           settings: settings,
           fullscreenDialog: true,
         );

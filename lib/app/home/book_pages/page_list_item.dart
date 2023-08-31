@@ -63,8 +63,8 @@ class PageListItem extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
           ),
-        if (page.verseList.isNotEmpty)
-          Text(verseList, style: const TextStyle(fontSize: 12.0)),
+        // if (page.verseList.isNotEmpty)
+        //   Text(verseList, style: const TextStyle(fontSize: 12.0)),
       ],
     );
   }
@@ -87,16 +87,28 @@ class DismissiblePageListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-      background: Container(color: Colors.red),
-      key: dismissibleKey,
-      direction: DismissDirection.endToStart,
-      onDismissed: (direction) => onDismissed?.call(),
-      child: PageListItem(
-        page: page,
-        book: book,
-        onTap: onTap,
-      ),
-    );
+    // return Dismissible(
+    //   background: Container(color: Colors.red),
+    //   key: dismissibleKey,
+    //   direction: DismissDirection.endToStart,
+    //   onDismissed: (direction) => onDismissed?.call(),
+    //   child: PageListItem(
+    //     page: page,
+    //     book: book,
+    //     onTap: onTap,
+    //   ),
+    // );
+    return OutlinedButton(
+        onPressed: onTap,
+        child: Container(
+          child: Card(
+            child: ListTile(
+              title: Text(page.title),
+            ),
+            elevation: 8,
+            shadowColor: Colors.blue,
+            margin: EdgeInsets.all(20),
+          ),
+        ));
   }
 }

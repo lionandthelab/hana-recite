@@ -1,5 +1,5 @@
 name: hanarecite
-description: A new Flutter project.
+description: Hana Recite
 publish_to: none
 
 # The following defines the version and build number for your application.
@@ -12,7 +12,7 @@ publish_to: none
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.1.0+2
+version: 0.0.6+6
 
 environment:
   sdk: ">=2.14.0 <3.0.0"
@@ -48,8 +48,12 @@ dependencies:
   rxdart: ^0.27.1
   shared_preferences: ^2.0.6
   state_notifier: ^0.7.0
-  just_audio: ^0.9.13
+  audioplayer: 0.8.1
   syncfusion_flutter_datepicker: ^20.1.56 
+  youtube_player_flutter: 8.1.0
+  cached_network_image: ^3.2.1
+  flutter_swiper: ^1.1.6
+
 
 dev_dependencies:
   flutter_driver:
@@ -73,7 +77,9 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/time-tracking.svg
+    - assets/images/bg.png
+    - assets/bible.svg
+    - assets/bible_bg.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

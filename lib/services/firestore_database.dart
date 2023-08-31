@@ -70,6 +70,7 @@ class FirestoreDatabase {
   Stream<List<Book>> booksStream() => _service.collectionStream(
         path: FirestorePath.books(),
         builder: (data, documentId) => Book.fromMap(data, documentId),
+        sort: (lhs, rhs) => rhs.publisher.compareTo(lhs.publisher),
       );
 
   // Page
@@ -80,7 +81,7 @@ class FirestoreDatabase {
             ? (query) => query.where('bookId', isEqualTo: book.id)
             : null,
         builder: (data, documentID) => Page.fromMap(data, documentID),
-        sort: (lhs, rhs) => rhs.pageIndex.compareTo(lhs.pageIndex),
+        sort: (lhs, rhs) => lhs.pageIndex.compareTo(rhs.pageIndex),
       );
 
   // Verse

@@ -11,7 +11,6 @@ import 'package:alert_dialogs/alert_dialogs.dart';
 import 'package:hanarecite/routing/app_router.dart';
 import 'package:hanarecite/services/firestore_database.dart';
 import 'package:pedantic/pedantic.dart';
-import 'package:just_audio/just_audio.dart';
 
 class EntryPage extends ConsumerStatefulWidget {
   const EntryPage({required this.job, this.entry});
@@ -40,12 +39,10 @@ class _EntryPageState extends ConsumerState<EntryPage> {
   late TimeOfDay _endTime;
   late String _comment;
   late String _verseList;
-  late AudioPlayer player;
 
   @override
   void initState() {
     super.initState();
-    player = AudioPlayer();
 
     final start = widget.entry?.start ?? DateTime.now();
     _startDate = DateTime(start.year, start.month, start.day);
@@ -61,7 +58,6 @@ class _EntryPageState extends ConsumerState<EntryPage> {
 
   @override
   void dispose() {
-    player.dispose();
     super.dispose();
   }
 
@@ -101,20 +97,7 @@ class _EntryPageState extends ConsumerState<EntryPage> {
       appBar: AppBar(
         elevation: 2.0,
         title: Text(widget.job.name),
-        actions: <Widget>[
-          TextButton(
-            child: Text(
-              widget.entry != null ? '음성파일 재생' : '음성파일 추가',
-              style: const TextStyle(fontSize: 18.0, color: Colors.white),
-            ),
-            // onPressed: () => _setEntryAndDismiss(),
-            onPressed: () async {
-              await player.setAsset(
-                  'https://www.applesaucekids.com/sound%20effects/moo.mp3');
-              player.play();
-            },
-          ),
-        ],
+        actions: <Widget>[],
       ),
       body: SingleChildScrollView(
         child: Container(

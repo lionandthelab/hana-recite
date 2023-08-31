@@ -27,15 +27,14 @@ class ListItemsBuilder<T> extends StatelessWidget {
   }
 
   Widget _buildList(List<T> items) {
-    return ListView.separated(
-      itemCount: items.length + 2,
-      separatorBuilder: (context, index) => const Divider(height: 0.5),
+    return GridView.builder(
+      itemCount: items.length,
       itemBuilder: (context, index) {
-        if (index == 0 || index == items.length + 1) {
-          return Container(); // zero height: not visible
-        }
-        return itemBuilder(context, items[index - 1]);
+        return itemBuilder(context, items[index]);
       },
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+      ),
     );
   }
 }

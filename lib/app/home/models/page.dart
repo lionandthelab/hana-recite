@@ -10,7 +10,8 @@ class Page extends Equatable {
       required this.title,
       required this.bgUrl,
       required this.voiceUrl,
-      required this.verseList});
+      required this.verseList,
+      required this.chantVidList});
   final String id;
   final String bookId;
   final int pageIndex;
@@ -18,10 +19,11 @@ class Page extends Equatable {
   final String bgUrl;
   final String voiceUrl;
   final String verseList;
+  final String chantVidList;
 
   @override
   List<Object> get props =>
-      [id, bookId, pageIndex, title, bgUrl, voiceUrl, verseList];
+      [id, bookId, pageIndex, title, bgUrl, voiceUrl, verseList, chantVidList];
 
   @override
   bool get stringify => true;
@@ -54,6 +56,10 @@ class Page extends Equatable {
     if (verseList == null) {
       throw StateError('missing verseList for pageId: $documentId');
     }
+    final chantVidList = data['chantVidList'] as String?;
+    if (chantVidList == null) {
+      throw StateError('missing chantVidList for pageId: $documentId');
+    }
     return Page(
         id: documentId,
         bookId: bookId,
@@ -61,7 +67,8 @@ class Page extends Equatable {
         title: title,
         bgUrl: bgUrl,
         voiceUrl: voiceUrl,
-        verseList: verseList);
+        verseList: verseList,
+        chantVidList: chantVidList);
   }
 
   Map<String, dynamic> toMap() {
@@ -72,6 +79,7 @@ class Page extends Equatable {
       'bgUrl': bgUrl,
       'voiceUrl': voiceUrl,
       'verseList': verseList,
+      'chantVidList': chantVidList
     };
   }
 }
